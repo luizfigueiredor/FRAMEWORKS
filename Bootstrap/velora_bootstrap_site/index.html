@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VELORA — moda atemporal, elegância e autenticidade.">
+  <title>VELORA | Elegância que atravessa o tempo</title>
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Ícones Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navegação -->
+  <nav class="navbar navbar-expand-lg navbar-dark velora-nav sticky-top">
+    <div class="container">
+      <a class="navbar-brand brand-name" href="#inicio">VELORA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+        aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#inicio">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#colecao">Coleção</a></li>
+          <li class="nav-item"><a class="nav-link" href="#beneficios">Benefícios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        </ul>
+        <div class="nav-icons d-flex gap-3">
+          <a href="#colecao" aria-label="Buscar produtos"><i class="bi bi-search"></i></a>
+          <a href="#contato" aria-label="Minha conta"><i class="bi bi-person"></i></a>
+          <a href="#colecao" aria-label="Sacola de compras"><i class="bi bi-bag"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Carrossel principal: estrutura adaptada do exemplo Bootstrap -->
+    <section id="inicio" class="hero-section">
+      <div id="carouselVelora" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5500">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselVelora" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselVelora" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselVelora" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active hero-slide hero-slide-one">
+            <div class="hero-shade"></div>
+            <div class="container hero-content">
+              <p class="eyebrow">COLEÇÃO ESSÊNCIA</p>
+              <h1>Elegância que<br>atravessa o tempo.</h1>
+              <p class="hero-description">Peças atemporais, design sofisticado e materiais selecionados para acompanhar você todos os dias.</p>
+              <a class="btn btn-velora-light" href="#colecao">VER COLEÇÃO <span>→</span></a>
+            </div>
+          </div>
+
+          <div class="carousel-item hero-slide hero-slide-two">
+            <div class="hero-shade"></div>
+            <div class="container hero-content">
+              <p class="eyebrow">MENOS, MAS MELHOR</p>
+              <h2>O essencial<br>nunca sai de moda.</h2>
+              <p class="hero-description">Uma seleção de formas, texturas e tons neutros para construir seu próprio estilo.</p>
+              <a class="btn btn-velora-light" href="#colecao">DESCOBRIR PEÇAS <span>→</span></a>
+            </div>
+          </div>
+
+          <div class="carousel-item hero-slide hero-slide-three">
+            <div class="hero-shade"></div>
+            <div class="container hero-content">
+              <p class="eyebrow">SEU ESTILO, SUA HISTÓRIA</p>
+              <h2>Vista-se de<br>autenticidade.</h2>
+              <p class="hero-description">Design contemporâneo e conforto em peças feitas para durar além das tendências.</p>
+              <a class="btn btn-velora-light" href="#sobre">CONHEÇA A VELORA <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselVelora" data-bs-slide="prev" aria-label="Slide anterior">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselVelora" data-bs-slide="next" aria-label="Próximo slide">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" class="benefits-section">
+      <div class="container">
+        <div class="row g-4 text-center">
+          <div class="col-6 col-lg-3 benefit-item">
+            <i class="bi bi-truck"></i>
+            <h3>FRETE ESPECIAL</h3>
+            <p>Condições especiais para suas compras.</p>
+          </div>
+          <div class="col-6 col-lg-3 benefit-item">
+            <i class="bi bi-shield-check"></i>
+            <h3>COMPRA SEGURA</h3>
+            <p>Seus dados protegidos durante a compra.</p>
+          </div>
+          <div class="col-6 col-lg-3 benefit-item">
+            <i class="bi bi-credit-card"></i>
+            <h3>PAGAMENTO FACILITADO</h3>
+            <p>Opções de pagamento para você.</p>
+          </div>
+          <div class="col-6 col-lg-3 benefit-item">
+            <i class="bi bi-arrow-repeat"></i>
+            <h3>TROCA FACILITADA</h3>
+            <p>Suporte para uma experiência tranquila.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre a marca -->
+    <section id="sobre" class="about-section section-space">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <img class="about-image" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85" alt="Araras com roupas em tons neutros">
+          </div>
+          <div class="col-lg-6 about-copy">
+            <p class="eyebrow dark-eyebrow">SOBRE A VELORA</p>
+            <h2>Mais que roupas,<br>um estilo de vida.</h2>
+            <p>A Velora nasceu da paixão por unir elegância, conforto e autenticidade. Nossa proposta é valorizar a sua essência com peças versáteis, qualidade e um olhar atento aos detalhes.</p>
+            <p>Acreditamos em um guarda-roupa consciente: menos excessos, mais possibilidades e escolhas que fazem sentido para você.</p>
+            <a href="#contato" class="btn btn-velora-dark">CONHEÇA NOSSA HISTÓRIA <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coleções -->
+    <section id="colecao" class="collection-section section-space">
+      <div class="container">
+        <div class="row align-items-end g-4 mb-4">
+          <div class="col-lg-4 collection-intro">
+            <p class="eyebrow dark-eyebrow">DESTAQUES DA COLEÇÃO</p>
+            <h2>Escolhas que<br>combinam com você.</h2>
+            <p>Explore peças versáteis para criar combinações que acompanham sua rotina e seu estilo.</p>
+            <a href="#contato" class="btn btn-velora-outline">VER TODAS <span>→</span></a>
+          </div>
+          <div class="col-lg-8">
+            <div class="row g-3">
+              <div class="col-6 col-md-4">
+                <a href="#contato" class="collection-card">
+                  <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=85" alt="Blazer elegante em tons neutros">
+                  <h3>Blazers</h3>
+                  <p>Elegância para todas as ocasiões.</p>
+                  <span>EXPLORAR →</span>
+                </a>
+              </div>
+              <div class="col-6 col-md-4">
+                <a href="#contato" class="collection-card">
+                  <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=85" alt="Peças de tricô em estilo minimalista">
+                  <h3>Tricôs</h3>
+                  <p>Conforto com sofisticação.</p>
+                  <span>EXPLORAR →</span>
+                </a>
+              </div>
+              <div class="col-6 col-md-4">
+                <a href="#contato" class="collection-card">
+                  <img src="https://images.unsplash.com/photo-1506629905607-d9b1e7c2c0b6?auto=format&fit=crop&w=800&q=85" alt="Calças de alfaiataria em tons neutros">
+                  <h3>Alfaiataria</h3>
+                  <p>Caimento que faz a diferença.</p>
+                  <span>EXPLORAR →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="contato" class="newsletter-section">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-4">
+            <p class="eyebrow">CARTA VELORA</p>
+            <h2>Fique por dentro<br>das novidades.</h2>
+            <p class="newsletter-note">Receba lançamentos e inspirações diretamente no seu e-mail.</p>
+          </div>
+          <div class="col-lg-5">
+            <form id="newsletterForm" class="newsletter-form">
+              <label class="visually-hidden" for="emailNewsletter">Seu e-mail</label>
+              <input id="emailNewsletter" type="email" class="form-control" placeholder="Seu e-mail" required>
+              <button class="btn btn-velora-light" type="submit">INSCREVER</button>
+            </form>
+            <p id="newsletterMessage" class="newsletter-message" aria-live="polite"></p>
+          </div>
+          <div class="col-lg-3 social-links">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand-name footer-brand" href="#inicio">VELORA</a>
+      <div class="footer-nav">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#colecao">Coleção</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <p class="copyright">© <span id="currentYear"></span> VELORA. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
