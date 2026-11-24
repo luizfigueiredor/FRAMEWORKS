@@ -1,514 +1,1190 @@
 <!DOCTYPE html>
-<html lang="pt-Br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f5f0">
+    <meta name="description" content="VELORA — moda atemporal, elegância e sofisticação em cada detalhe.">
     <title>VELORA | Moda Atemporal</title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/" />
-    <script src="../bootstrap-5.3.8-examples/bootstrap-5.3.8-examples/assets/js/color-modes.js"></script>
-    <link href="../bootstrap-5.3.8-examples/bootstrap-5.3.8-examples/assets/dist/css/bootstrap.min.css"
-        rel="stylesheet" />
-    <meta name="theme-color" content="#712cf9" />
+
+    <!-- Bootstrap 5.3.8: caminho relativo à pasta Atividade -->
+    <link rel="stylesheet" href="../bootstrap-5.3.8-examples/bootstrap-5.3.8-examples/assets/dist/css/bootstrap.min.css">
+
+    <!-- Tipografia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --velora-cream: #f7f5f0;
+            --velora-beige: #e8e1d6;
+            --velora-taupe: #9a8d7d;
+            --velora-black: #171715;
+            --velora-gray: #77736d;
+            --velora-white: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding-top: 78px;
+            background: var(--velora-white);
+            color: var(--velora-black);
+            font-family: "DM Sans", sans-serif;
+        }
+
+        h1, h2, h3, h4, .navbar-brand, .editorial-title {
+            font-family: "Playfair Display", serif;
+            font-weight: 400;
+        }
+
+        a { color: inherit; }
+
+        .announcement {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1040;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--velora-black);
+            color: #fff;
+            font-size: .67rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .navbar {
+            top: 30px;
+            min-height: 68px;
+            background: rgba(255,255,255,.96);
+            border-bottom: 1px solid #eeeae4;
+            backdrop-filter: blur(12px);
+        }
+
+        .navbar-brand {
+            font-size: 1.75rem;
+            letter-spacing: .22em;
+            font-weight: 600;
+            margin-right: 3rem;
+        }
+
+        .navbar-nav { gap: 1.3rem; }
+
+        .navbar .nav-link {
+            color: #373530;
+            font-size: .72rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            transition: color .25s ease;
+        }
+
+        .navbar .nav-link:hover { color: var(--velora-taupe); }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-button {
+            border: 0;
+            background: transparent;
+            color: var(--velora-black);
+            font-size: .78rem;
+            letter-spacing: .08em;
+            padding: .45rem;
+        }
+
+        .cart-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 19px;
+            height: 19px;
+            margin-left: 3px;
+            border-radius: 50%;
+            background: var(--velora-black);
+            color: white;
+            font-size: .65rem;
+        }
+
+        .hero-carousel .carousel-item {
+            height: clamp(580px, 76vh, 760px);
+            min-height: 580px;
+            background: #c9c0b4;
+        }
+
+        .hero-carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(.78);
+        }
+
+        .hero-carousel .carousel-caption {
+            right: auto;
+            bottom: 15%;
+            left: 10%;
+            width: min(850px, 78%);
+            text-align: left;
+        }
+
+        .eyebrow {
+            display: block;
+            margin-bottom: 1rem;
+            font-size: .68rem;
+            letter-spacing: .23em;
+            text-transform: uppercase;
+        }
+
+        .hero-carousel h1 {
+            max-width: 850px;
+            margin-bottom: 1.2rem;
+            font-size: clamp(2.6rem, 4.5vw, 4.8rem);
+            line-height: 1.08;
+        }
+
+        .hero-carousel p {
+            max-width: 470px;
+            font-size: .95rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,.9);
+        }
+
+        .btn-velora {
+            display: inline-block;
+            padding: 14px 27px;
+            border: 1px solid var(--velora-black);
+            border-radius: 0;
+            background: var(--velora-black);
+            color: white;
+            font-size: .7rem;
+            letter-spacing: .14em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all .25s ease;
+        }
+
+        .btn-velora:hover {
+            background: transparent;
+            color: var(--velora-black);
+        }
+
+        .btn-velora-light {
+            border-color: white;
+            background: white;
+            color: var(--velora-black);
+        }
+
+        .btn-velora-light:hover {
+            background: transparent;
+            color: white;
+        }
+
+        .section-space { padding: 100px 0; }
+
+        .section-kicker {
+            margin-bottom: 13px;
+            color: var(--velora-taupe);
+            font-size: .68rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .section-heading {
+            margin-bottom: 16px;
+            font-size: clamp(2.1rem, 4vw, 3.4rem);
+        }
+
+        .section-description {
+            max-width: 590px;
+            margin: 0 auto;
+            color: var(--velora-gray);
+            font-size: .9rem;
+            line-height: 1.9;
+        }
+
+        .intro-strip {
+            padding: 28px 15px;
+            border-bottom: 1px solid #eeeae4;
+            background: var(--velora-cream);
+            text-align: center;
+            color: #5d5851;
+            font-size: .7rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .category-card {
+            position: relative;
+            display: block;
+            height: 430px;
+            overflow: hidden;
+            background: var(--velora-beige);
+            color: white;
+            text-decoration: none;
+        }
+
+        .category-card img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            transition: transform .7s ease;
+            filter: brightness(.78);
+        }
+
+        /* Ajuste individual do enquadramento das fotos das categorias */
+        .category-card:nth-child(1) img { object-position: center 28%; }
+        .category-card:nth-child(2) img { object-position: center 25%; }
+        .category-card:nth-child(3) img { object-position: center 35%; }
+
+        .category-card:hover img { transform: scale(1.055); }
+
+        .category-card-content {
+            position: absolute;
+            right: 25px;
+            bottom: 28px;
+            left: 25px;
+        }
+
+        .category-card h3 { font-size: 2.2rem; }
+
+        .category-card span {
+            font-size: .68rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .collection-section { background: var(--velora-cream); }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 32px 0 42px;
+        }
+
+        .filter-btn {
+            padding: 9px 18px;
+            border: 1px solid #d8d1c7;
+            border-radius: 0;
+            background: transparent;
+            color: #5f5a53;
+            font-size: .67rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            border-color: var(--velora-black);
+            background: var(--velora-black);
+            color: white;
+        }
+
+        .product-card {
+            height: 100%;
+            background: transparent;
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3 / 4;
+            background: #e8e2d9;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .55s ease;
+        }
+
+        .product-card:hover .product-image img { transform: scale(1.045); }
+
+        .product-tag {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+            padding: 6px 10px;
+            background: rgba(255,255,255,.92);
+            color: #37332e;
+            font-size: .59rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .product-info { padding: 17px 2px 10px; }
+
+        .product-info h3 {
+            margin-bottom: 6px;
+            font-family: "DM Sans", sans-serif;
+            font-size: .88rem;
+            font-weight: 500;
+        }
+
+        .product-category {
+            margin-bottom: 8px;
+            color: var(--velora-gray);
+            font-size: .72rem;
+        }
+
+        .product-price {
+            margin-bottom: 13px;
+            font-size: .85rem;
+            font-weight: 600;
+        }
+
+        .add-cart {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #24231f;
+            background: transparent;
+            color: #24231f;
+            font-size: .65rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            transition: all .25s ease;
+        }
+
+        .add-cart:hover {
+            background: var(--velora-black);
+            color: white;
+        }
+
+        .editorial-section { padding: 0; }
+
+        .editorial-image {
+            width: 100%;
+            min-height: 570px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .editorial-copy {
+            display: flex;
+            min-height: 570px;
+            flex-direction: column;
+            justify-content: center;
+            padding: 70px clamp(30px, 8vw, 120px);
+            background: var(--velora-cream);
+        }
+
+        .editorial-copy h2 {
+            margin-bottom: 25px;
+            font-size: clamp(2.4rem, 4vw, 4rem);
+            line-height: 1.15;
+        }
+
+        .editorial-copy p {
+            max-width: 480px;
+            color: var(--velora-gray);
+            font-size: .9rem;
+            line-height: 2;
+        }
+
+        .values-section { background: white; }
+
+        .value-item {
+            padding: 25px 18px;
+            text-align: center;
+        }
+
+        .value-number {
+            display: block;
+            margin-bottom: 15px;
+            color: var(--velora-taupe);
+            font-family: "Playfair Display", serif;
+            font-size: 2rem;
+        }
+
+        .value-item h3 {
+            margin-bottom: 10px;
+            font-family: "DM Sans", sans-serif;
+            font-size: .76rem;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+
+        .value-item p {
+            margin: 0 auto;
+            max-width: 260px;
+            color: var(--velora-gray);
+            font-size: .78rem;
+            line-height: 1.8;
+        }
+
+        .newsletter {
+            padding: 85px 20px;
+            background: var(--velora-beige);
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 510px;
+            margin: 28px auto 0;
+        }
+
+        .newsletter-form input {
+            min-width: 0;
+            flex: 1;
+            padding: 14px 16px;
+            border: 1px solid #c9c0b4;
+            border-right: 0;
+            border-radius: 0;
+            background: rgba(255,255,255,.75);
+            outline: none;
+            font-size: .8rem;
+        }
+
+        .newsletter-form button {
+            padding: 14px 20px;
+            border: 1px solid var(--velora-black);
+            border-radius: 0;
+            background: var(--velora-black);
+            color: white;
+            font-size: .67rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .contact-section { background: var(--velora-cream); }
+
+        .contact-form .form-control {
+            padding: 14px 15px;
+            border: 1px solid #ded8cf;
+            border-radius: 0;
+            background: white;
+            font-size: .82rem;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: var(--velora-taupe);
+            box-shadow: 0 0 0 .15rem rgba(154,141,125,.12);
+        }
+
+        .site-footer {
+            padding: 65px 0 25px;
+            background: var(--velora-black);
+            color: white;
+        }
+
+        .footer-brand {
+            margin-bottom: 15px;
+            font-family: "Playfair Display", serif;
+            font-size: 2rem;
+            letter-spacing: .2em;
+        }
+
+        .footer-text {
+            max-width: 330px;
+            color: #bcb8b1;
+            font-size: .78rem;
+            line-height: 1.9;
+        }
+
+        .footer-title {
+            margin-bottom: 18px;
+            font-size: .68rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .footer-links a {
+            color: #c8c4bd;
+            font-size: .77rem;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover { color: white; }
+
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #393834;
+            color: #aaa69f;
+            font-size: .68rem;
+        }
+
+        .offcanvas {
+            background: #fbfaf7;
+        }
+
+        .offcanvas-title {
+            font-family: "Playfair Display", serif;
+            letter-spacing: .08em;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 14px;
+            padding: 15px 0;
+            border-bottom: 1px solid #e7e1d8;
+        }
+
+        .cart-item img {
+            width: 76px;
+            height: 96px;
+            object-fit: cover;
+        }
+
+        .cart-item-info { flex: 1; }
+
+        .cart-item-info h6 {
+            margin-bottom: 6px;
+            font-size: .82rem;
+        }
+
+        .cart-item-info p {
+            margin-bottom: 8px;
+            color: var(--velora-gray);
+            font-size: .78rem;
+        }
+
+        .remove-item {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: #8a5148;
+            font-size: .7rem;
+            text-decoration: underline;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            font-size: .9rem;
+        }
+
+        .empty-cart {
+            padding: 45px 10px;
+            color: var(--velora-gray);
+            text-align: center;
+            font-size: .85rem;
+        }
+
+        .toast {
+            border: 0;
+            border-radius: 0;
+            background: var(--velora-black);
+            color: white;
+        }
+
+        .toast .btn-close { filter: invert(1); }
+
+        @media (min-width: 768px) and (max-width: 1100px) {
+            .hero-carousel .carousel-caption { width: 78%; }
+            .hero-carousel h1 { font-size: clamp(3rem, 5vw, 4rem); }
+        }
+
+        @media (max-width: 767.98px) {
+            body { padding-top: 72px; }
+            .navbar { min-height: 62px; }
+            .navbar-brand { margin-right: 0; font-size: 1.45rem; }
+            .navbar-nav { gap: .3rem; padding: 15px 0; }
+            .nav-actions { padding: 8px 0 14px; }
+            .hero-carousel .carousel-item { height: 620px; min-height: 0; }
+            .hero-carousel .carousel-caption {
+                right: 7%;
+                bottom: 12%;
+                left: 7%;
+                width: 86%;
+            }
+            .hero-carousel h1 { max-width: 620px; font-size: clamp(2.5rem, 9vw, 3.3rem); }
+            .section-space { padding: 70px 0; }
+            .category-card { height: 350px; }
+            .editorial-image { min-height: 390px; max-height: 480px; }
+            .editorial-copy { min-height: 0; padding: 65px 28px; }
+            .newsletter-form { flex-direction: column; gap: 8px; }
+            .newsletter-form input { border: 1px solid #c9c0b4; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { transition-duration: .01ms !important; }
+        }
+    </style>
 </head>
-<style>
-    /* GLOBAL STYLES
--------------------------------------------------- */
-    /* Padding below the footer and lighter body text */
-
-    body {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        color: rgb(var(--bs-tertiary-color-rgb));
-    }
-
-
-    /* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-    /* Carousel base class */
-    .carousel {
-        margin-bottom: 4rem;
-    }
-
-    /* Since positioning the image, we need to help out the caption */
-    .carousel-caption {
-        bottom: 3rem;
-        z-index: 10;
-    }
-
-    /* Declare heights because of positioning of img element */
-    .carousel-item {
-        height: 32rem;
-    }
-
-
-    /* MARKETING CONTENT
--------------------------------------------------- */
-
-    /* Center align the text within the three columns below the carousel */
-    .marketing .col-lg-4 {
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-
-    .marketing .col-lg-4 p {
-        margin-right: .75rem;
-        margin-left: .75rem;
-    }
-
-
-    /* Featurettes
-------------------------- */
-
-    .featurette-divider {
-        margin: 5rem 0;
-        /* Space out the Bootstrap <hr> more */
-    }
-
-    /* Thin out the marketing headings */
-
-    /* RESPONSIVE CSS
--------------------------------------------------- */
-
-    @media (min-width: 40em) {
-
-        /* Bump up size of carousel content */
-        .carousel-caption p {
-            margin-bottom: 1.25rem;
-            font-size: 1.25rem;
-            line-height: 1.4;
-        }
-
-        .featurette-heading {
-            font-size: 50px;
-        }
-    }
-
-    @media (min-width: 62em) {
-        .featurette-heading {
-            margin-top: 7rem;
-        }
-    }
-
-    .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-    }
-
-    @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-        }
-    }
-
-    .b-example-divider {
-        width: 100%;
-        height: 3rem;
-        background-color: #0000001a;
-        border: solid rgba(0, 0, 0, 0.15);
-        border-width: 1px 0;
-        box-shadow:
-            inset 0 0.5em 1.5em #0000001a,
-            inset 0 0.125em 0.5em #00000026;
-    }
-
-    .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-    }
-
-    .bi {
-        vertical-align: -0.125em;
-        fill: currentColor;
-    }
-
-    .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-    }
-
-    .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .btn-bd-primary {
-        --bd-violet-bg: #712cf9;
-        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-        --bs-btn-font-weight: 600;
-        --bs-btn-color: var(--bs-white);
-        --bs-btn-bg: var(--bd-violet-bg);
-        --bs-btn-border-color: var(--bd-violet-bg);
-        --bs-btn-hover-color: var(--bs-white);
-        --bs-btn-hover-bg: #6528e0;
-        --bs-btn-hover-border-color: #6528e0;
-        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-        --bs-btn-active-color: var(--bs-btn-hover-color);
-        --bs-btn-active-bg: #5a23c8;
-        --bs-btn-active-border-color: #5a23c8;
-    }
-
-    .bd-mode-toggle {
-        z-index: 1500;
-    }
-
-    .bd-mode-toggle .bi {
-        width: 1em;
-        height: 1em;
-    }
-
-    .bd-mode-toggle .dropdown-menu .active .bi {
-        display: block !important;
-    }
-</style>
 
 <body>
-    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-        <symbol id="check2" viewBox="0 0 16 16">
-            <path
-                d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z">
-            </path>
-        </symbol>
-        <symbol id="circle-half" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
-        </symbol>
-        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
-            <path
-                d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z">
-            </path>
-            <path
-                d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z">
-            </path>
-        </symbol>
-        <symbol id="sun-fill" viewBox="0 0 16 16">
-            <path
-                d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z">
-            </path>
-        </symbol>
-    </svg>
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
-            aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
-            <svg class="bi my-1 theme-icon-active" aria-hidden="true">
-                <use href="#circle-half"></use>
-            </svg>
-            <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
-                    aria-pressed="false">
-                    <svg class="bi me-2 opacity-50" aria-hidden="true">
-                        <use href="#sun-fill"></use>
-                    </svg>
-                    Light
-                    <svg class="bi ms-auto d-none" aria-hidden="true">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
-                    aria-pressed="false">
-                    <svg class="bi me-2 opacity-50" aria-hidden="true">
-                        <use href="#moon-stars-fill"></use>
-                    </svg>
-                    Dark
-                    <svg class="bi ms-auto d-none" aria-hidden="true">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
-                    aria-pressed="true">
-                    <svg class="bi me-2 opacity-50" aria-hidden="true">
-                        <use href="#circle-half"></use>
-                    </svg>
-                    Auto
-                    <svg class="bi ms-auto d-none" aria-hidden="true">
-                        <use href="#check2"></use>
-                    </svg>
-                </button>
-            </li>
-        </ul>
-    </div>
-    <header data-bs-theme="dark">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">VELORA</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="announcement">Elegância em sua forma mais essencial</div>
+
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#inicio">VELORA</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarVelora" aria-controls="navbarVelora"
+                    aria-expanded="false" aria-label="Abrir menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#inicio">Início</a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#colecao">Coleção</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#sobre">Sobre nós</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contato">Contato</a>
-                        </li>
+                <div class="collapse navbar-collapse" id="navbarVelora">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" href="#inicio">Início</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#categorias">Categorias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#colecao">Coleção</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sobre">A marca</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
                     </ul>
+
+                    <div class="nav-actions">
+                        <button class="icon-button" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#carrinho" aria-controls="carrinho">
+                            SACOLA <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
+
     <main>
-        <div id="inicio" class="carousel slide mb-6" data-bs-ride="carousel">
+        <!-- CAROUSEL: estrutura baseada no exemplo oficial do Bootstrap -->
+        <section id="inicio" class="carousel slide hero-carousel" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#inicio" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#inicio" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#inicio" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#inicio" data-bs-slide-to="0"
+                    class="active" aria-current="true" aria-label="Banner 1"></button>
+                <button type="button" data-bs-target="#inicio" data-bs-slide-to="1"
+                    aria-label="Banner 2"></button>
+                <button type="button" data-bs-target="#inicio" data-bs-slide-to="2"
+                    aria-label="Banner 3"></button>
             </div>
+
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="imagens/Banner1.jpg" alt="Slide 1" class="d-block w-100">
-                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                </img>
-                    <div class="container">
-                        <div class="carousel-caption text-start">
-                            <h1>Elegância que atravessa o tempo.</h1>
-                            <p class="opacity-75">
-                                Descubra a VELORA, uma coleção que combina sofisticação,
-                                simplicidade e estilo atemporal.
-                            </p>
-                            <p>
-                                <a class="btn btn-lg btn-light" href="#colecao">Explorar coleção</a>
-                            </p>
-                        </div>
+                    <img src="imagens/Banner1.jpg" alt="Campanha de moda VELORA">
+                    <div class="carousel-caption">
+                        <span class="eyebrow">Coleção atemporal</span>
+                        <h1>Elegância que atravessa o tempo.</h1>
+                        <p>Descubra uma nova forma de vestir: simples, sofisticada e feita para acompanhar você.</p>
+                        <a href="#colecao" class="btn-velora btn-velora-light">Explorar coleção</a>
                     </div>
                 </div>
+
                 <div class="carousel-item">
-                    <img src="imagens/Banner2.jpg" alt="Slide 2" class="d-block w-100">
-                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                </img>
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>O essencial nunca sai de moda.</h1>
-                            <p>
-                                Peças versáteis e cuidadosamente selecionadas
-                                para acompanhar diferentes momentos.
-                            </p>
-                            <p><a class="btn btn-lg btn-light" href="#sobre">Conheça a VELORA</a></p>
-                        </div>
+                    <img src="imagens/Banner2.jpg" alt="Editorial de moda VELORA">
+                    <div class="carousel-caption">
+                        <span class="eyebrow">O valor do essencial</span>
+                        <h1>Menos excessos. Mais identidade.</h1>
+                        <p>Peças versáteis, escolhas conscientes e detalhes que fazem a diferença.</p>
+                        <a href="#sobre" class="btn-velora btn-velora-light">Conheça a marca</a>
                     </div>
                 </div>
+
                 <div class="carousel-item">
-                    <img src="imagens/Banner3.jpg" alt="Slide 3" class="d-block w-100">
-                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                    </svg>
-                    <div class="container">
-                        <div class="carousel-caption text-end">
-                            <h1>Seu estilo. Sua identidade.</h1>
-                            <p>
-                                Encontre peças que traduzem personalidade,
-                                confiança e elegância em cada detalhe.
-                            </p>
-                            <p>
-                                <a class="btn btn-lg btn-light" href="#colecao">Ver novidades</a>
-                            </p>
-                        </div>
+                    <img src="imagens/Banner3.jpg" alt="Estilo e personalidade VELORA">
+                    <div class="carousel-caption">
+                        <span class="eyebrow">Vista sua essência</span>
+                        <h1>Seu estilo, sua própria expressão.</h1>
+                        <p>Uma curadoria que valoriza a autenticidade e a beleza da simplicidade.</p>
+                        <a href="#categorias" class="btn-velora btn-velora-light">Descobrir peças</a>
                     </div>
                 </div>
             </div>
+
             <button class="carousel-control-prev" type="button" data-bs-target="#inicio" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">Anterior</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#inicio" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">Próximo</span>
             </button>
-        </div>
-        <!-- Marketing messaging and featurettes
-  ================================================== -->
-        <!-- Wrap the rest of the page in another container to center all the content. -->
-        <div class="container marketing" id="colecao">
-            <!-- Three columns of text below the carousel -->
-            <div class="row">
-                <div class="col-lg-4">
-                    <svg aria-label="Placeholder" class="bd-placeholder-img rounded-circle" height="140"
-                        preserveAspectRatio="xMidYMid slice" role="img" width="140" xmlns="http://www.w3.org/2000/svg">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                    </svg>
-                    <h2 class="fw-normal">Essenciais</h2>
-                    <p>
-                        Peças versáteis e atemporais para compor
-                        combinações elegantes em qualquer ocasião.
-                    </p>
-                    <p>
-                        <a class="btn btn-secondary" href="#sobre">
-                            Descobrir »
-                        </a>
-                    </p>
-                </div>
-                <!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <svg aria-label="Placeholder" class="bd-placeholder-img rounded-circle" height="140"
-                        preserveAspectRatio="xMidYMid slice" role="img" width="140" xmlns="imagens/banner-velora.jpg">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                    </svg>
-                    <h2 class="fw-normal">Novidades</h2>
-                    <p>
-                        Conheça as novidades da VELORA e descubra
-                        novas possibilidades para o seu estilo.
-                    </p>
-                    <p>
-                        <a class="btn btn-secondary" href="#sobre">
-                            Explorar »
-                        </a>
-                    </p>
-                </div>
-                <!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <svg aria-label="Placeholder" class="bd-placeholder-img rounded-circle" height="140"
-                        preserveAspectRatio="xMidYMid slice" role="img" width="140" xmlns="http://www.w3.org/2000/svg">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                    </svg>
-                    <h2 class="fw-normal">Atemporalidade</h2>
-                    <p>
-                        Uma proposta de moda que valoriza a
-                        simplicidade, a qualidade e a autenticidade.
-                    </p>
-                    <p>
-                        <a class="btn btn-secondary" href="#sobre">
-                            Nossa essência »
-                        </a>
-                    </p>
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
-            <!-- START THE FEATURETTES -->
-            <hr class="featurette-divider" />
-            <div class="row featurette" id="sobre">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading fw-normal lh-1">
-                        Menos excessos.
-                        <span class="text-body-secondary">
-                            Mais identidade.
-                        </span>
-                    </h2>
-                    <p class="lead">
-                        A VELORA nasceu da valorização da moda
-                        atemporal e da elegância sem excessos.
-                        Acreditamos que o estilo está nos detalhes,
-                        na simplicidade e na liberdade de expressar
-                        quem somos por meio das nossas escolhas.
-                    </p>
-                </div>
-                <div class="col-md-5">
-                    <svg aria-label="Placeholder: 500x500"
-                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" height="500"
-                        preserveAspectRatio="xMidYMid slice" role="img" width="500" xmlns="http://www.w3.org/2000/svg">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-                        <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">
-                            500x500
-                        </text>
-                    </svg>
-                </div>
-            </div>
-            <hr class="featurette-divider" />
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading fw-normal lh-1">
-                        Elegância em cada detalhe.
-                        <span class="text-body-secondary">
-                            Feita para você.
-                        </span>
-                    </h2>
-                    <p class="lead">
-                        Nossa proposta é oferecer uma experiência
-                        de moda simples, sofisticada e inspiradora.
-                        Cada escolha é pensada para valorizar a
-                        personalidade e criar combinações que
-                        continuam relevantes ao longo do tempo.
-                    </p>
-                </div>
-                <div class="col-md-5 order-md-1">
-                    <svg aria-label="Placeholder: 500x500"
-                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" height="500"
-                        preserveAspectRatio="xMidYMid slice" role="img" width="500" xmlns="http://www.w3.org/2000/svg">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-                        <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">
-                            500x500
-                        </text>
-                    </svg>
-                </div>
-            </div>
-            <hr class="featurette-divider" />
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading fw-normal lh-1">
-                        Seu estilo, suas escolhas.
-                        <span class="text-body-secondary">
-                            Sua VELORA.
-                        </span>
-                    </h2>
-                    <p class="lead">
-                        Descubra uma nova forma de olhar para a
-                        moda, combinando peças versáteis, estética
-                        minimalista e autenticidade. A VELORA
-                        acompanha você em diferentes momentos,
-                        sem abrir mão da elegância.
-                    </p>
-                </div><div class="col-md-5">
-    <img src="imagens/Foto_card.jpg" 
-         alt="Descrição da imagem" 
-         class="featurette-image img-fluid mx-auto" 
-         width="500" 
-         height="500">
-</div>
-            </div>
-            <hr class="featurette-divider" />
-            <!-- /END THE FEATURETTES -->
-        </div>
-        <!-- /.container -->
-        <!-- FOOTER -->
-        <footer class="container" id="contato">
-            <p class="float-end">
-                <a href="#inicio">Voltar ao topo</a>
-            </p>
+        </section>
 
-            <p>
-                © 2026 VELORA. Moda atemporal.
-                <a href="#sobre">Sobre nós</a>
-                ·
-                <a href="#colecao">Coleção</a>
-            </p>
-        </footer>
+        <div class="intro-strip">
+            Atemporal por essência &nbsp; · &nbsp; Sofisticada por natureza &nbsp; · &nbsp; VELORA
+        </div>
+
+        <!-- CATEGORIAS -->
+        <section id="categorias" class="section-space">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <p class="section-kicker">Explore a VELORA</p>
+                    <h2 class="section-heading">Encontre sua essência.</h2>
+                    <p class="section-description">Uma seleção pensada para diferentes estilos, momentos e formas de expressão.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <a href="#colecao" class="category-card" data-category-link="feminino">
+                            <img src="imagens/Foto_card.jpg" alt="Seleção feminina">
+                            <div class="category-card-content">
+                                <h3>Feminino</h3>
+                                <span>Descobrir seleção &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#colecao" class="category-card" data-category-link="masculino">
+                            <img src="imagens/Foto_card2.jpg" alt="Seleção masculina">
+                            <div class="category-card-content">
+                                <h3>Masculino</h3>
+                                <span>Descobrir seleção &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#colecao" class="category-card" data-category-link="acessorios">
+                            <img src="imagens/banner-velora.jpg" alt="Seleção de acessórios">
+                            <div class="category-card-content">
+                                <h3>Acessórios</h3>
+                                <span>Descobrir seleção &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VITRINE DE PRODUTOS -->
+        <section id="colecao" class="section-space collection-section">
+            <div class="container">
+                <div class="text-center">
+                    <p class="section-kicker">Curadoria VELORA</p>
+                    <h2 class="section-heading">Peças para permanecer.</h2>
+                    <p class="section-description">Conheça uma seleção de itens essenciais, escolhidos para unir versatilidade e elegância.</p>
+                </div>
+
+                <div class="filter-buttons" aria-label="Filtrar produtos">
+                    <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
+                    <button class="filter-btn" type="button" data-filter="feminino">Feminino</button>
+                    <button class="filter-btn" type="button" data-filter="masculino">Masculino</button>
+                    <button class="filter-btn" type="button" data-filter="acessorios">Acessórios</button>
+                </div>
+
+                <div class="row g-4" id="productGrid">
+                    <div class="col-6 col-lg-3 product-column" data-category="feminino">
+                        <article class="product-card" data-id="1" data-name="Essencial em Linho" data-price="189.90" data-image="imagens/Foto_card.jpg">
+                            <div class="product-image">
+                                <span class="product-tag">Destaque</span>
+                                <img src="imagens/Foto_card.jpg" alt="Peça essencial em linho" loading="lazy">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">Feminino</p>
+                                <h3>Essencial em Linho</h3>
+                                <p class="product-price">R$ 189,90</p>
+                                <button class="add-cart" type="button">Adicionar à sacola</button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-6 col-lg-3 product-column" data-category="masculino">
+                        <article class="product-card" data-id="2" data-name="Clássico Contemporâneo" data-price="219.90" data-image="imagens/Foto_card2.jpg">
+                            <div class="product-image">
+                                <span class="product-tag">Novo</span>
+                                <img src="imagens/Foto_card2.jpg" alt="Peça clássica contemporânea" loading="lazy">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">Masculino</p>
+                                <h3>Clássico Contemporâneo</h3>
+                                <p class="product-price">R$ 219,90</p>
+                                <button class="add-cart" type="button">Adicionar à sacola</button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-6 col-lg-3 product-column" data-category="acessorios">
+                        <article class="product-card" data-id="3" data-name="Detalhe Atemporal" data-price="129.90" data-image="imagens/banner-velora.jpg">
+                            <div class="product-image">
+                                <span class="product-tag">Seleção</span>
+                                <img src="imagens/banner-velora.jpg" alt="Detalhe da coleção VELORA" loading="lazy">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">Acessórios</p>
+                                <h3>Detalhe Atemporal</h3>
+                                <p class="product-price">R$ 129,90</p>
+                                <button class="add-cart" type="button">Adicionar à sacola</button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-6 col-lg-3 product-column" data-category="feminino">
+                        <article class="product-card" data-id="4" data-name="Forma & Elegância" data-price="249.90" data-image="imagens/Foto_card2.jpg">
+                            <div class="product-image">
+                                <span class="product-tag">Edição especial</span>
+                                <img src="imagens/Foto_card2.jpg" alt="Peça de edição especial" loading="lazy">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">Feminino</p>
+                                <h3>Forma &amp; Elegância</h3>
+                                <p class="product-price">R$ 249,90</p>
+                                <button class="add-cart" type="button">Adicionar à sacola</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <p class="text-center mt-5 mb-0 small text-secondary">* Produtos, imagens e preços são demonstrativos e podem ser personalizados.</p>
+            </div>
+        </section>
+
+        <!-- EDITORIAL / SOBRE A MARCA -->
+        <section id="sobre" class="editorial-section">
+            <div class="row g-0">
+                <div class="col-lg-6">
+                    <img class="editorial-image" src="imagens/Foto_card.jpg" alt="Universo visual da VELORA" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <div class="editorial-copy">
+                        <p class="section-kicker">Nossa essência</p>
+                        <h2>O verdadeiro luxo está na simplicidade.</h2>
+                        <p>A VELORA nasceu da valorização da moda atemporal e da elegância sem excessos. Acreditamos que o estilo está nos detalhes, na qualidade e na liberdade de expressar quem somos.</p>
+                        <p>Mais do que acompanhar tendências, buscamos inspirar escolhas que permanecem. Cada peça representa uma forma de unir conforto, autenticidade e sofisticação.</p>
+                        <div class="mt-3">
+                            <a href="#contato" class="btn-velora">Conheça a VELORA</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALORES -->
+        <section class="section-space values-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <p class="section-kicker">O que nos inspira</p>
+                    <h2 class="section-heading">A beleza do essencial.</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="value-item">
+                            <span class="value-number">01</span>
+                            <h3>Elegância</h3>
+                            <p>Uma estética refinada que valoriza os detalhes e dispensa excessos.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="value-item">
+                            <span class="value-number">02</span>
+                            <h3>Atemporalidade</h3>
+                            <p>Escolhas versáteis que continuam relevantes em diferentes momentos.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="value-item">
+                            <span class="value-number">03</span>
+                            <h3>Autenticidade</h3>
+                            <p>Liberdade para expressar sua identidade com confiança e personalidade.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="newsletter">
+            <div class="container">
+                <p class="section-kicker">Cartas da VELORA</p>
+                <h2 class="section-heading">Inspire-se com o essencial.</h2>
+                <p class="section-description">Receba novidades, lançamentos e inspirações diretamente no seu e-mail.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" id="newsletterEmail" placeholder="Seu melhor e-mail" aria-label="Seu e-mail" required>
+                    <button type="submit">Inscrever-se</button>
+                </form>
+                <p id="newsletterMessage" class="small mt-3 mb-0" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- CONTATO -->
+        <section id="contato" class="section-space contact-section">
+            <div class="container">
+                <div class="row g-5 align-items-start">
+                    <div class="col-lg-5">
+                        <p class="section-kicker">Estamos à disposição</p>
+                        <h2 class="section-heading">Vamos conversar?</h2>
+                        <p class="section-description mx-0">Tem alguma dúvida ou deseja saber mais sobre a VELORA? Envie uma mensagem. Será um prazer receber seu contato.</p>
+                        <div class="mt-4">
+                            <p class="mb-2 small"><strong>E-mail:</strong> contato@velora.com.br</p>
+                            <p class="mb-2 small"><strong>Instagram:</strong> @velora</p>
+                            <p class="small text-secondary">Informações demonstrativas — personalize com os canais oficiais da marca.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 offset-lg-1">
+                        <form class="contact-form" id="contactForm">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label small">Nome</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Seu nome" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label small">E-mail</label>
+                                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="assunto" class="form-label small">Assunto</label>
+                                <input type="text" class="form-control" id="assunto" placeholder="Como podemos ajudar?" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensagem" class="form-label small">Mensagem</label>
+                                <textarea class="form-control" id="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-velora">Enviar mensagem</button>
+                            <p id="contactMessage" class="small mt-3 mb-0" aria-live="polite"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <script src="../bootstrap-5.3.8-examples/bootstrap-5.3.8-examples/assets/dist/js/bootstrap.bundle.min.js"
-        class="astro-vvvwv3sm"></script>
-</body>
 
+    <!-- RODAPÉ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <div class="footer-brand">VELORA</div>
+                    <p class="footer-text">Moda atemporal, elegância discreta e autenticidade. O essencial permanece.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h3 class="footer-title">Navegação</h3>
+                    <div class="footer-links">
+                        <a href="#inicio">Início</a>
+                        <a href="#categorias">Categorias</a>
+                        <a href="#colecao">Coleção</a>
+                        <a href="#sobre">Nossa marca</a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h3 class="footer-title">Atendimento</h3>
+                    <div class="footer-links">
+                        <a href="#contato">Fale conosco</a>
+                        <a href="#contato">Dúvidas</a>
+                        <a href="#contato">Privacidade</a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h3 class="footer-title">Acompanhe</h3>
+                    <div class="footer-links">
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer">Pinterest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
+                <span>&copy; 2026 VELORA. Todos os direitos reservados.</span>
+                <span>Feito com atenção a cada detalhe.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CARRINHO LATERAL -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="carrinho" aria-labelledby="carrinhoLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="carrinhoLabel">Sua sacola</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <div id="cartItems" class="flex-grow-1">
+                <div class="empty-cart">Sua sacola está vazia.<br>Descubra nossas peças e escolha suas favoritas.</div>
+            </div>
+            <div class="border-top">
+                <div class="cart-total">
+                    <strong>Subtotal</strong>
+                    <strong id="cartTotal">R$ 0,00</strong>
+                </div>
+                <button type="button" class="btn-velora w-100" id="checkoutButton">Finalizar pedido</button>
+                <p class="small text-secondary text-center mt-3 mb-0">Demonstração de carrinho — sem pagamento real.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AVISO DE PRODUTO ADICIONADO -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="cartToast" class="toast align-items-center" role="status" aria-live="polite" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Produto adicionado à sacola.</div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Fechar"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="../bootstrap-5.3.8-examples/bootstrap-5.3.8-examples/assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Formata valores em reais.
+        function formatarMoeda(valor) {
+            return valor.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            });
+        }
+
+        // FILTRO DA VITRINE
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const productColumns = document.querySelectorAll(".product-column");
+
+        function filtrarProdutos(categoria) {
+            filterButtons.forEach(function(button) {
+                button.classList.toggle("active", button.dataset.filter === categoria);
+            });
+
+            productColumns.forEach(function(column) {
+                const mostrar = categoria === "todos" || column.dataset.category === categoria;
+                column.classList.toggle("d-none", !mostrar);
+            });
+        }
+
+        filterButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                filtrarProdutos(button.dataset.filter);
+            });
+        });
+
+        document.querySelectorAll("[data-category-link]").forEach(function(link) {
+            link.addEventListener("click", function() {
+                filtrarProdutos(link.dataset.categoryLink);
+            });
+        });
+
+        // CARRINHO
+        let carrinho = [];
+
+        const cartCount = document.getElementById("cartCount");
+        const cartItems = document.getElementById("cartItems");
+        const cartTotal = document.getElementById("cartTotal");
+        const cartToast = new bootstrap.Toast(document.getElementById("cartToast"));
+
+        function atualizarCarrinho() {
+            const quantidadeTotal = carrinho.reduce(function(total, item) {
+                return total + item.quantidade;
+            }, 0);
+
+            const valorTotal = carrinho.reduce(function(total, item) {
+                return total + (item.preco * item.quantidade);
+            }, 0);
+
+            cartCount.textContent = quantidadeTotal;
+            cartTotal.textContent = formatarMoeda(valorTotal);
+
+            if (carrinho.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Sua sacola está vazia.<br>Descubra nossas peças e escolha suas favoritas.</div>';
+                return;
+            }
+
+            cartItems.innerHTML = "";
+
+            carrinho.forEach(function(item) {
+                const linha = document.createElement("div");
+                linha.className = "cart-item";
+
+                const imagem = document.createElement("img");
+                imagem.src = item.imagem;
+                imagem.alt = item.nome;
+
+                const informacoes = document.createElement("div");
+                informacoes.className = "cart-item-info";
+
+                const nome = document.createElement("h6");
+                nome.textContent = item.nome;
+
+                const preco = document.createElement("p");
+                preco.textContent = formatarMoeda(item.preco) + " · Quantidade: " + item.quantidade;
+
+                const remover = document.createElement("button");
+                remover.type = "button";
+                remover.className = "remove-item";
+                remover.textContent = "Remover";
+                remover.addEventListener("click", function() {
+                    removerDoCarrinho(item.id);
+                });
+
+                informacoes.appendChild(nome);
+                informacoes.appendChild(preco);
+                informacoes.appendChild(remover);
+                linha.appendChild(imagem);
+                linha.appendChild(informacoes);
+                cartItems.appendChild(linha);
+            });
+        }
+
+        function adicionarAoCarrinho(produto) {
+            const produtoExistente = carrinho.find(function(item) {
+                return item.id === produto.id;
+            });
+
+            if (produtoExistente) {
+                produtoExistente.quantidade++;
+            } else {
+                carrinho.push({
+                    id: produto.id,
+                    nome: produto.nome,
+                    preco: produto.preco,
+                    imagem: produto.imagem,
+                    quantidade: 1
+                });
+            }
+
+            atualizarCarrinho();
+            cartToast.show();
+        }
+
+        function removerDoCarrinho(id) {
+            carrinho = carrinho.filter(function(item) {
+                return item.id !== id;
+            });
+            atualizarCarrinho();
+        }
+
+        document.querySelectorAll(".add-cart").forEach(function(button) {
+            button.addEventListener("click", function() {
+                const card = button.closest(".product-card");
+
+                const produto = {
+                    id: card.dataset.id,
+                    nome: card.dataset.name,
+                    preco: Number(card.dataset.price),
+                    imagem: card.dataset.image
+                };
+
+                adicionarAoCarrinho(produto);
+            });
+        });
+
+        document.getElementById("checkoutButton").addEventListener("click", function() {
+            if (carrinho.length === 0) {
+                alert("Sua sacola está vazia. Adicione um produto antes de continuar.");
+                return;
+            }
+
+            alert("Este é um carrinho demonstrativo. Para receber pedidos e pagamentos reais, será necessário integrar um sistema de vendas.");
+        });
+
+        // NEWSLETTER: demonstração visual, sem envio para servidor.
+        document.getElementById("newsletterForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("newsletterEmail").value;
+            document.getElementById("newsletterMessage").textContent =
+                "Obrigado pelo interesse! O cadastro demonstrativo foi preenchido para: " + email;
+            this.reset();
+        });
+
+        // CONTATO: demonstração visual, sem envio para servidor.
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("contactMessage").textContent =
+                "Mensagem preenchida com sucesso! Para receber mensagens de verdade, conecte este formulário a um back-end.";
+            this.reset();
+        });
+    </script>
+</body>
 </html>
